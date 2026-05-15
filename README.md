@@ -1,2 +1,2 @@
 # agentic-ai-engineering
-Code snippets of prototyping projects with agentic AI
+Code snippets of prototyping with agentic AI

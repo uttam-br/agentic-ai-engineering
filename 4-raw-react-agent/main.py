@@ -93,7 +93,6 @@ def run_agent(question: str):
     print("="*60)
 
     prompt = react_prompt.format(question=question)
-    scratchpad = ""
 
     for iteration in range(1, MAX_ITERATIONS + 1):
         print(f"\n---Iteration : {iteration} ---")
@@ -149,9 +148,7 @@ def run_agent(question: str):
 
         print(f"    [Tool Result] {tool_name} returned: {observation}")
 
-        scratchpad += f"{output}\nObservation: {observation}"
-
-        prompt += scratchpad
+        prompt += f"{output}\nObservation: {observation}"
 
 
 def main():

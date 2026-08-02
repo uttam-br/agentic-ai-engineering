@@ -1,0 +1,33 @@
+services:
+  # -------------------------------------------------------------
+  # OPTION 1: Database Emulator Mode (Recommended for most apps)
+  # Allows your app to dynamically create and manage multiple indexes
+  # -------------------------------------------------------------
+  # pinecone-local:
+  #   image: ghcr.io/pinecone-io/pinecone-local:latest
+  #   container_name: pinecone-local
+  #   platform: linux/amd64
+  #   ports:
+  #     # Exposes a range of ports to handle the DB and dynamic indexes
+  #     - "5080-5090:5080-5090"
+  #   environment:
+  #     - PORT=5080
+  #     - PINECONE_HOST=localhost
+
+
+  # -------------------------------------------------------------
+  # OPTION 2: Index Emulator Mode (For quick, single-index tests)
+  # Pre-creates one specific index on startup
+  # -------------------------------------------------------------
+  pinecone-index:
+    image: ghcr.io/pinecone-io/pinecone-index:latest
+    container_name: my-local-index
+    platform: linux/amd64
+    ports:
+      - "5081:5081"
+    environment:
+      - PORT=5081
+      - INDEX_TYPE=serverless
+      - VECTOR_TYPE=dense
+      - DIMENSION=1536      # Change this to match your embedding model
+      - METRIC=cosine

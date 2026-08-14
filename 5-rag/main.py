@@ -44,25 +44,39 @@ prompt_template = ChatPromptTemplate.from_template(
         
         {context}
 
-        Question: {query}
+        Question: {question}
 
         Provide a detailed answer:
     """
 )
-
 
 def format_docs(docs):
     """Format retrived documents into a single string"""
     return "\n\n".join(doc.page_content for doc in docs)
 
 
+def retrieval_chain_without_lcel(query: str):
+    """Retrieval chain without LCEL"""
 
+    # Step 1: Retrieve relevant documents from Pinecone
+    docs = retriever.invoke(query)
+
+    # Step 2: Format the retrieved documents into a single string
+    context = format_docs(docs)
+
+    messages = prompt_template.format_messages(context=context, question=query)
+
+    response = llm.invoke(messages)
+
+    return response.content
 
 if __name__ == "__main__":
     print("Retrieving")
 
     query = "What is Pinecone in machine learning"
 
-    result_raw = llm.invoke(HumanMessage(content=query))
+    # result_raw = llm.invoke([HumanMessage(content=query)])
+
+    result_raw = retrieval_chain_without_lcel(query)
 
     print("Raw result:", result_raw)

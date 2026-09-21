@@ -1,0 +1,13 @@
+services:
+  pinecone-index:
+    image: ghcr.io/pinecone-io/pinecone-index:latest
+    container_name: langchain-doc-index
+    platform: linux/amd64
+    ports:
+      - "5081:5081"
+    environment:
+      - PORT=5081
+      - INDEX_TYPE=serverless
+      - VECTOR_TYPE=dense
+      - DIMENSION=768      # Change this to match your embedding model
+      - METRIC=cosine

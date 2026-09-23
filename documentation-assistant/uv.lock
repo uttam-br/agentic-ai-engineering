@@ -755,6 +755,7 @@ dependencies = [
     { name = "streamlit-chat" },
     { name = "tiktoken" },
     { name = "tqdm" },
+    { name = "truststore" },
     { name = "unstructured" },
     { name = "uvicorn" },
 ]
@@ -779,6 +780,7 @@ requires-dist = [
     { name = "streamlit-chat", specifier = ">=0.1.1" },
     { name = "tiktoken", specifier = ">=0.14.0" },
     { name = "tqdm", specifier = ">=4.70.1" },
+    { name = "truststore", specifier = ">=0.10.4" },
     { name = "unstructured", specifier = ">=0.27.6" },
     { name = "uvicorn", specifier = ">=0.53.0" },
 ]

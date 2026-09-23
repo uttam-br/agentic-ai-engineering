@@ -23,6 +23,7 @@ dependencies = [
     "streamlit-chat>=0.1.1",
     "tiktoken>=0.14.0",
     "tqdm>=4.70.1",
+    "truststore>=0.10.4",
     "unstructured>=0.27.6",
     "uvicorn>=0.53.0",
 ]
